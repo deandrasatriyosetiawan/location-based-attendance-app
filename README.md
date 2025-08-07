@@ -4,17 +4,13 @@ Sebuah aplikasi Flutter sederhana untuk absensi kehadiran berbasis lokasi dan fo
 # Cara Menjalankan
 Pastikan Anda sudah menginstal Flutter SDK pada environment Anda.
 
-1. Clone Repository
-git clone https://github.com/deandrasatriyosetiawan/location-based-attendance-app.git
+1. Clone Repository: git clone https://github.com/deandrasatriyosetiawan/location-based-attendance-app.git
 
-2. Masuk ke Direktori Proyek
-cd location_based_attendance_app
+2. Masuk ke Direktori Proyek: cd location_based_attendance_app
 
-3. Install Dependencies
-flutter pub get
+3. Install Dependencies: flutter pub get
 
-4. Jalankan Aplikasi
-flutter run
+4. Jalankan Aplikasi: flutter run
 
 # Plugin yang Digunakan
 Berikut adalah daftar plugin utama yang digunakan dalam pengembangan aplikasi ini, dikelompokkan berdasarkan fungsinya:
