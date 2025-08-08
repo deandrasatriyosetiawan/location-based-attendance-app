@@ -38,6 +38,7 @@ class _AttendancePageState extends State<AttendancePage> {
   late final DeviceLocationCubit _deviceLocationCubit;
   late final LocationPermissionCubit _locationPermissionCubit;
   late final DevicePositionBloc _devicePositionBloc;
+  late final ImagePickerCubit _imagePickerCubit;
   late final UserDetailBloc _userDetailBloc;
   late final CreateAttendanceBloc _createAttendanceBloc;
   late final AttendanceDetailBloc _attendanceDetailBloc;
@@ -53,6 +54,7 @@ class _AttendancePageState extends State<AttendancePage> {
     _deviceLocationCubit = context.read<DeviceLocationCubit>();
     _locationPermissionCubit = context.read<LocationPermissionCubit>();
     _devicePositionBloc = context.read<DevicePositionBloc>();
+    _imagePickerCubit = context.read<ImagePickerCubit>();
     _userDetailBloc = context.read<UserDetailBloc>();
     _createAttendanceBloc = context.read<CreateAttendanceBloc>();
     _attendanceDetailBloc = context.read<AttendanceDetailBloc>();
@@ -61,6 +63,7 @@ class _AttendancePageState extends State<AttendancePage> {
     _locationPermissionCubit.checkPermission();
     _userDetailBloc.add(UserDetailRequested(userId: widget.userId));
     _attendanceDetailBloc.add(LatestAttendanceRequested(userId: widget.userId));
+    _imagePickerCubit.clear();
   }
 
   void _refreshLocation() {
@@ -125,6 +128,8 @@ class _AttendancePageState extends State<AttendancePage> {
 
   void _handleCreateAttendanceState(BuildContext context, CreateAttendanceState state) {
     if (state is CreateAttendanceSuccess) {
+      _attendanceDetailBloc.add(LatestAttendanceRequested(userId: widget.userId));
+      _imagePickerCubit.clear();
       context.showFloatingSuccessSnackBar(message: state.message);
     } else if (state is CreateAttendanceFailure) {
       context.showFloatingErrorSnackBar(message: state.message);
